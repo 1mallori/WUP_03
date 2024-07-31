@@ -55,6 +55,7 @@ The numerical summary also shows that the back seats 2.5 more than the middle an
 
 ## Inferential Tests
 
+
 ```{r}
 model1 <- aov(alcohol~Seat,data=davisdata)
 summary.aov(model1)
