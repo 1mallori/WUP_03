@@ -48,6 +48,7 @@ This boxplot shows that the consumption of alcohol for the back are greater than
 
 ### Numerical Summary
 
+
 ```{r}
 favstats(alcohol~Seat,data=ucdavis1)
 ```
