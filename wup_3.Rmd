@@ -27,6 +27,7 @@ $H_0$: There is no difference between the average number of drinks imbibed betwe
 $H_A$: The average number drinks is different between at least two rows.
 
 ## Methods
+
 In the data set by davisdata Seat is categorical variable, alcohol is numerical.
 
 We are trying to predict alcohol consumption ~ based on seating, so we use the Numerical~Cat helper file.
