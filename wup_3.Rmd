@@ -76,4 +76,5 @@ In the TUkey HSD plot also shows middle and back drink more than the front.
 
 ## Conclusions
 
+
 The null hypothesis stating that "alcohol consumption is not dependent on row seating" was tested using Numerical~Cat.rmd program and information from UCDavis where data set by davisdata Seat is categorical variable, alcohol is numerical.The results showed a p-value of 0.000116, which is less than the significance level of 0.05. Therefore, we rejected the null hypothesis and conclude that alcohol consumption is indeed dependent on row seating.
