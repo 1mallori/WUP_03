@@ -14,31 +14,63 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
-## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-## you choose to sit in??
 
-## Now with ggplot - first select the basic data
+## introduction
+
+
+Our Goal is to answer this question Is there a difference between the alcohol consumed between the row you choose to sit in.
+
+The data came from UCDavis in the 1990's.
+
+$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
+
+$H_A$: The average number drinks is different between at least two rows.
+
+## Methods
+In the data set by davisdata Seat is categorical variable, alcohol is numerical.
+
+We are trying to predict alcohol consumption ~ based on seating, so we use the Numerical~Cat helper file.
+
+## Graphical Summary
 
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
-## Now add in boxplot
+
 
 ```{r}
 basicCN + geom_boxplot()
 ```
-  
-  
-### get fancy  
+
+This boxplot shows that the consumption of alcohol for the back are greater than the middle and front seats.
+
+
+### Numerical Summary
 
 ```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+favstats(alcohol~Seat,data=ucdavis1)
 ```
-
-## Numerical Summarys 
+The numerical summary also shows that the back seats 2.5 more than the middle and 3.5 more than the front seats.
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+The p-value is 0.000116, less than 0.05 so we reject the null hypothesis.
+There is a difference in alcohol consumption based on where people sit.
+
+## When significant follow up wth TukeyHSD
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+In the TUkey HSD plot also shows middle and back drink more than the front.
+
+
+
 ## Conclusions
 
-
+The null hypothesis stating that "alcohol consumption is not dependent on row seating" was tested using Numerical~Cat.rmd program and information from UCDavis where data set by davisdata Seat is categorical variable, alcohol is numerical.The results showed a p-value of 0.000116, which is less than the significance level of 0.05. Therefore, we rejected the null hypothesis and conclude that alcohol consumption is indeed dependent on row seating.
